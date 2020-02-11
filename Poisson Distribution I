@@ -1,0 +1,31 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <iomanip>
+using namespace std;
+
+double probPoisson(double k, double l, double e);
+int factorial(int n);
+int main() {
+  /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+  double e = 2.71828;
+  double x, y, res;
+  cin >> x >> y;
+  res = probPoisson(y,x,e);
+  cout << setprecision(3) << fixed << res;
+  return 0;
+}
+int factorial(int n) 
+{
+  if (n > 1)
+    return n * factorial(n - 1);
+  else
+    return 1;
+}
+double probPoisson(double k, double l, double e)
+{
+    return (pow(l,k) * pow(e,-l))/factorial(k);
+}
+
