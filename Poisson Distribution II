@@ -1,0 +1,22 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <iomanip>
+using namespace std;
+
+double expVar(double l);
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    double a, b;
+    cin >> a >> b;
+    cout << setprecision(3) << fixed << 160+40*expVar(a) << "\n";
+    cout << setprecision(3) << fixed << 128+40*expVar(b);
+    return 0;
+}
+double expVar(double l)
+{
+    return pow(l,2)+l;
+}
+
