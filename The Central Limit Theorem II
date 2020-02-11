@@ -1,0 +1,22 @@
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <iomanip>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+double ztoper(double x, double mean, double s, double n) {
+  return 0.5 * erfc((x - mean) / sqrt(2 * (s*s/n)));
+}
+
+int main() {
+  double x, n, m, s;
+  double ans;
+  cin >> x >> n >> m >> s;
+  x/=n;
+  ans = 1 - ztoper(x, m, s, n);
+  cout << setprecision(4) << fixed<< ans ;
+  return 0;
+}
+
