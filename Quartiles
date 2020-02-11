@@ -1,0 +1,41 @@
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <iomanip>
+#include <iostream>
+#include <numeric>
+#include <vector>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    int n;
+    int q1, q2, q3;
+    cin >> n;
+    vector<int> x(n);
+    for (int i = 0; i < n; i++) 
+    {
+      cin >> x[i];
+    }
+    sort(x.begin(),x.end());
+    q2 = x[n / 2];//if odd
+    if (!(n & 1)) //if even
+    {
+      q2 = (q2 + x[n / 2 - 1]) / 2;
+    }
+   
+    int m = n/2;
+    q1 = x[m/2];
+    q3 = x[n/2+m/2];
+    if(!(m&1))
+    {
+        q1 = (q1 + x[m / 2 - 1]) / 2;
+        (!(n&1)) ? q3 = (q3 + x[n/2+m/2-1])/2 : q3 = (q3 + x[n/2+m/2+1])/2;
+    }
+    cout<<q1<<"\n";
+    cout<<q2<<"\n";
+    cout<<q3<<"\n";
+    return 0;
+}
+
