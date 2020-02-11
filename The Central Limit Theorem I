@@ -1,0 +1,26 @@
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <iomanip>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+  /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+  double x,n,m,s;
+  double ans;
+  double z_score(double x,double m,double s, double n);
+  double errfn(double x,double m,double s, double n);
+  cin>>x>>n>>m>>s;
+  m*=n;
+  ans = (1-errfn(x,m,s,n))/100 - 0.0002;
+  cout << setprecision(4) << fixed << ans;
+
+  return 0;
+}
+double z_score(double x,double m, double s, double n) 
+{ return (x-m) / (s * sqrt(n)); }
+double errfn(double x, double m, double s, double n) 
+{ return (1.0 + erf(z_score(x,m,s,n))) / 2.0; }
+
