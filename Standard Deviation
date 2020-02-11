@@ -1,0 +1,32 @@
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <iomanip>
+#include <iostream>
+#include <numeric>
+#include <vector>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n;
+    double mean, stdev=0;
+    cin >> n;
+    vector<int> x(n);
+    for (int i = 0; i < n; i++) 
+    {
+      cin >> x[i];
+    }
+    mean = accumulate(x.begin(), x.end(), 0);
+    mean /= n;
+    for (int i = 0; i < n; i++) 
+    {
+      stdev += pow((x[i]-mean),2);
+    }
+    stdev /= n;
+    stdev = sqrt(stdev);
+    cout << setprecision(1) << fixed << stdev << "\n";
+    return 0;
+}
+
