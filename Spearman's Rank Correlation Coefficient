@@ -1,0 +1,50 @@
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <iomanip>
+#include <iostream>
+#include <numeric>
+#include <vector>
+using namespace std;
+
+int findRank(vector<double> v, double val)
+{
+    for(int i=0; i<v.size(); i++)
+    {
+        if (v[i] == val)
+        return i+1;
+    }
+    return 0;
+}
+
+int main() {
+  int N;
+  double res;
+  cin >> N;
+  vector<double> x(N), y(N),sX(N),sY(N);
+  vector<int> d(N);
+  for (int i = 0; i < N; i++) {
+    cin >> x[i];
+  }
+  for (int i = 0; i < N; i++) {
+    sX[i]=x[i];
+  }
+  sort(sX.begin(), sX.end());
+  for (int i = 0; i < N; i++) {
+    cin >> y[i];
+  }
+  for (int i = 0; i < N; i++) {
+    sY[i] = y[i];
+  }
+  sort(sY.begin(), sY.end());
+  for(int i=0; i<N; i++)
+  {
+      int val;
+      val = findRank(sX, x[i]) - findRank(sY, y[i]);
+      d[i]= pow(val,2);
+  }
+  res = (6 * accumulate(d.begin(),d.end(),0))/(N*(pow(N,2)-1));
+  cout << setprecision(3)<< fixed<<1-res;
+  return 0;
+}
+
