@@ -1,0 +1,27 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <iomanip>
+using namespace std;
+
+double geometric(int n, double p);
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    double np, dp, ins;
+    double p, ans;
+    cin>>np>>dp;
+    cin>>ins;
+    p=np/dp;
+    ans = geometric(ins, p);
+    cout << setprecision(3) << fixed << ans;
+    return 0;
+}
+double geometric(int n, double p)
+{
+    double res;
+    res = pow((1-p),(n-1))*p;
+    return res;
+}
+
