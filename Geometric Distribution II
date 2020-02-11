@@ -1,0 +1,33 @@
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <iomanip>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int factorial(int n);
+double binomial(int x, int n, double p);
+int main() {
+  /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+  double br, gr, trials;
+  double p, ans;
+  cin >> br >> gr >> trials;
+  p = br / gr;
+  ans = binomial(0, trials, p);
+  cout << setprecision(3) << fixed << 1 - ans;
+  return 0;
+}
+int factorial(int n) {
+  if (n > 1)
+    return n * factorial(n - 1);
+  else
+    return 1;
+}
+double binomial(int x, int n, double p) {
+  double res;
+  res = (factorial(n) / (factorial(x) * factorial(n - x))) * pow(p, x) *
+        pow((1 - p), (n));
+  return res;
+}
+
